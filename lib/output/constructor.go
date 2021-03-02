@@ -188,6 +188,7 @@ const (
 	TypeKafka              = "kafka"
 	TypeKinesis            = "kinesis"
 	TypeKinesisFirehose    = "kinesis_firehose"
+	TypeMongoDB            = "mongodb"
 	TypeMQTT               = "mqtt"
 	TypeNanomsg            = "nanomsg"
 	TypeNATS               = "nats"
@@ -256,6 +257,7 @@ type Config struct {
 	Kafka              writer.KafkaConfig             `json:"kafka" yaml:"kafka"`
 	Kinesis            writer.KinesisConfig           `json:"kinesis" yaml:"kinesis"`
 	KinesisFirehose    writer.KinesisFirehoseConfig   `json:"kinesis_firehose" yaml:"kinesis_firehose"`
+	MongoDB            MongoDBConfig                  `json:"mongodb" yaml:"mongodb"`
 	MQTT               writer.MQTTConfig              `json:"mqtt" yaml:"mqtt"`
 	Nanomsg            writer.NanomsgConfig           `json:"nanomsg" yaml:"nanomsg"`
 	NATS               writer.NATSConfig              `json:"nats" yaml:"nats"`
@@ -326,6 +328,7 @@ func NewConfig() Config {
 		Kinesis:            writer.NewKinesisConfig(),
 		KinesisFirehose:    writer.NewKinesisFirehoseConfig(),
 		MQTT:               writer.NewMQTTConfig(),
+		MongoDB:            NewMongoDBConfig(),
 		Nanomsg:            writer.NewNanomsgConfig(),
 		NATS:               writer.NewNATSConfig(),
 		NATSStream:         writer.NewNATSStreamConfig(),

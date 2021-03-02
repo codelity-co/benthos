@@ -11,7 +11,8 @@ import (
 	"github.com/Jeffail/benthos/v3/lib/metrics"
 	"github.com/Jeffail/benthos/v3/lib/types"
 	"github.com/Jeffail/benthos/v3/lib/util/config"
-	yaml "gopkg.in/yaml.v3"
+
+	"gopkg.in/yaml.v3"
 )
 
 //------------------------------------------------------------------------------
@@ -86,6 +87,7 @@ const (
 	TypeFile        = "file"
 	TypeMemcached   = "memcached"
 	TypeMemory      = "memory"
+	TypeMongoDB     = "mongodb"
 	TypeMultilevel  = "multilevel"
 	TypeRedis       = "redis"
 	TypeRistretto   = "ristretto"
@@ -103,6 +105,7 @@ type Config struct {
 	File        FileConfig       `json:"file" yaml:"file"`
 	Memcached   MemcachedConfig  `json:"memcached" yaml:"memcached"`
 	Memory      MemoryConfig     `json:"memory" yaml:"memory"`
+	MongoDB     MongoDBConfig    `json:"mongodb" yaml:"mongodb"`
 	Multilevel  MultilevelConfig `json:"multilevel" yaml:"multilevel"`
 	Plugin      interface{}      `json:"plugin,omitempty" yaml:"plugin,omitempty"`
 	Redis       RedisConfig      `json:"redis" yaml:"redis"`
@@ -120,6 +123,7 @@ func NewConfig() Config {
 		File:        NewFileConfig(),
 		Memcached:   NewMemcachedConfig(),
 		Memory:      NewMemoryConfig(),
+		MongoDB:     NewMongoDBConfig(),
 		Multilevel:  NewMultilevelConfig(),
 		Plugin:      nil,
 		Redis:       NewRedisConfig(),
